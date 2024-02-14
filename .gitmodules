@@ -1,0 +1,3 @@
+[submodule "themes/pelican-theme-html5up-hyperspace"]
+	path = themes/pelican-theme-html5up-hyperspace
+	url = git@github.com:trinora/pelican-theme-html5up-hyperspace.git

@@ -1,0 +1,6 @@
+content/
+static/
+theme/
+output/
+/manage
+*.md

@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+IMAGE_TAG="trinora/$(basename "$PWD"):localdev_$(id -un)_$(hostname)"
+
+#if docker image inspect "$IMAGE_TAG" >/dev/null 2>&1; 
+
+case "$1" in
+    build-image) docker image build -t "$IMAGE_TAG" . ;;
+    clean-image) docker image rm -f "$IMAGE_TAG" ;;
+    *) docker run \
+        -it --rm \
+        --user="$(id -u):$(id -g)" \
+        -p 8000:8000 \
+        -v "$PWD:/app" \
+        "$IMAGE_TAG" "$@" ;;
+esac
+
+#docker run -it --rm --user=`id -u`:`id -g` -v `pwd`:/app -p 8000:8000 app "$@"
